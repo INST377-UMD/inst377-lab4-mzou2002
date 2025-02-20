@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>INST377 - Lab 4</title>
+    </head>
+
+    <body>
+        <h1 id="word">This element will change color?</h1>
+        <button onclick="changeColor()">CHANGE THE COLOR</button>
+        
+        <!-- Javascript code -->
+        <script type="text/javascript">
+            function changeColor() {
+                console.log("Attempting to change color of text, current color is: ",document.getElementById("word").style.color)
+                
+                if (document.getElementById("word").style.color = 'red') {
+                    document.getElementById("word").style.color = 'black';
+                } else {
+                    document.getElementById("word").style.color = 'red';
+                }
+                
+                console.log("Successfully changed color of text, new color is: ", document.getElementById("word").style.color)
+            }
+
+        </script>
+    </body>
+
+</html>
