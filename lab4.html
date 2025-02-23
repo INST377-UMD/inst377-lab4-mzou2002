@@ -1,27 +1,75 @@
 <html>
     <head>
         <title>INST377 - Lab 4</title>
+        <link rel="stylesheet" href="INST377-lab4-css.css">
     </head>
 
     <body>
-        <h1 id="word">This element will change color?</h1>
-        <button onclick="changeColor()">CHANGE THE COLOR</button>
-        
+        <h1 id="page-title">INST377 - Lab 4</h1>
+        <div>
+            <div class="section">
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                    <button onclick="alertName()">Alert Me!</button>
+                </form>
+            </div>
+
+            <aside class="side">
+                <button onclick="toggleBackground()">Change Color</button>
+            </aside>
+
+            <div class="section">
+                <form>
+                    <label for="textTester">Text Tester:</label>
+                    <input type="text" id="textTester">
+                    <button onclick="formValidation()">Validate Text</button>
+                </form>
+                
+            </div>
+
+            <aside class="side">
+                <button onclick="addText()">Add Text</button>
+            </aside>
+        </div>
+
         <!-- Javascript code -->
-        <script type="text/javascript">
-            function changeColor() {
-                console.log("Attempting to change color of text, current color is: ",document.getElementById("word").style.color)
-                
-                if (document.getElementById("word").style.color = 'red') {
-                    document.getElementById("word").style.color = 'black';
+         <script type="text/javascript">
+            function alertName() {
+                const nameInput = document.getElementById("name").value;
+                if (nameInput.trim() === "") {
+                alert("Please enter a name.");
                 } else {
-                    document.getElementById("word").style.color = 'red';
+                alert("Hi " + nameInput + "!");
                 }
-                
-                console.log("Successfully changed color of text, new color is: ", document.getElementById("word").style.color)
             }
 
-        </script>
+            function formValidation() {
+                console.log('Validating user input', document.getElementById("textTester").value)
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                
+                if (validation.test(document.getElementById("textTester").value)) {
+                    alert("Invalid input: No special characters allowed!");
+                } else {
+                    alert("Valid input!");
+                }
+            }
+
+            function toggleBackground() {
+                if (document.body.style.backgroundColor === "lightblue") {
+                    document.body.style.backgroundColor = "lightgreen";
+                } else {
+                    document.body.style.backgroundColor = "lightblue";
+                }
+            }
+
+            function addText() {
+                const title = document.getElementById("page-title");
+                    if (!title.innerText.includes("Add Text")) {
+                    title.innerText += " - Add Text";
+                    }
+            }
+         </script>
     </body>
 
 </html>
